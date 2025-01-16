@@ -4,8 +4,6 @@ import Contact from "@/components/contents/Contact";
 import Hero from "@/components/contents/Hero";
 import Portofolio from "@/components/contents/Portofolio";
 import Navbar from "@/components/utils/Navbar";
-import { Certificates } from "@/data/Certificates";
-import { Project } from "@/data/Project";
 import React from "react";
 
 const Home = () => {
