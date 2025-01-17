@@ -12,7 +12,7 @@ const About = () => {
     <section id="about" className="mx-20">
       <Header title="About Me" description="Transforming ideas into digital experiences" />
       <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
-        <div className="order-2">
+        <div className="order-2 md:order-1">
           <div className="font-bold text-white text-6xl">
             <span className="text-[#2196f3]">Hello, i&apos;am</span>
             <h1>Putu Rivan Anggana</h1>
@@ -31,7 +31,7 @@ const About = () => {
           </div>
         </div>
 
-        <figure>
+        <figure className="md:order-2 order-1">
           <Image src="/Me.png" alt="profile" width={500} height={500} />
         </figure>
       </div>
