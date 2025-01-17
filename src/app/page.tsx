@@ -12,7 +12,7 @@ const Home = () => {
       <header>
         <Navbar />
       </header>
-      <main className="flex flex-col my-44 gap-32 z-10">
+      <main className="flex flex-col gap-32 z-10">
         <Hero />
         <About />
         <Portofolio />

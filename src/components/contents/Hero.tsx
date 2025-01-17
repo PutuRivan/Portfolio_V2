@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 
 const Hero = () => {
   return (
-    <section id="hero" className="flex flex-col items-center justify-center">
+    <section id="hero" className="py-44 flex flex-col items-center justify-center">
       {/* Badge */}
       <div className="flex flex-row gap-3 border border-[#fff] px-6 py-3 rounded-xl opacity-[0.9] ">
         <PiShootingStarFill size={24} fill="#2196f3" />
@@ -30,7 +30,7 @@ const Hero = () => {
       </div>
       {/* Description */}
       <div>
-        <p className="text-lg text-gray-400 my-5 max-w-[600px] text-center">
+        <p className="text-lg text-gray-400 my-5 max-w-[600px] text-center mx-2 md:mx-0">
           I&apos;m a dedicated student with a passion for technological
           advancements and fitness. Discover my journey and projects
         </p>

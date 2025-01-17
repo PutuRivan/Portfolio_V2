@@ -70,7 +70,13 @@ const ProjectDetail = ({
 
         <div className="flex items-start flex-col justify-start">
           <figure className="z-50">
-            <Image src={image} alt={title} width={700} height={700} className="z-50 rounded-3xl hover:rounded-xl scale-100 hover:scale-105 transition-all duration-300 "/>
+            <Image
+              src={image}
+              alt={title}
+              width={700}
+              height={700}
+              className="z-50 rounded-3xl hover:rounded-xl scale-100 hover:scale-105 transition-all duration-300 "
+            />
           </figure>
           <div className="my-5 flex flex-col gap-5">
             <h1>
