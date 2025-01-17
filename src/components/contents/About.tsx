@@ -11,8 +11,8 @@ const About = () => {
   return (
     <section id="about" className="mx-20">
       <Header title="About Me" description="Transforming ideas into digital experiences" />
-      <div className="grid grid-cols-2 place-items-center">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
+        <div className="order-2">
           <div className="font-bold text-white text-6xl">
             <span className="text-[#2196f3]">Hello, i&apos;am</span>
             <h1>Putu Rivan Anggana</h1>
@@ -36,7 +36,7 @@ const About = () => {
         </figure>
       </div>
 
-      <div className="flex flex-row gap-20 my-10 items-center justify-center">
+      <div className="flex flex-col md:flex-row md:gap-20 gap-5 my-10 items-center justify-center">
         <CardAbout
           title="Total Project"
           total={11}

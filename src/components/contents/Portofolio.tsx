@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { FaCode } from "react-icons/fa";
 import { LiaCertificateSolid } from "react-icons/lia";
@@ -10,8 +10,22 @@ import CardStack from "../utils/card-stack";
 import { Project } from "@/data/Project";
 import { Skill_data } from "@/data/Skills";
 import { Certificates } from "@/data/Certificates";
+import { Button } from "../ui/button";
 
 const Portofolio = () => {
+  // State to control the number of items displayed
+  const [visibleProjects, setVisibleProjects] = useState(6);
+  const [visibleCertificates, setVisibleCertificates] = useState(6);
+  const [visibleStack, setVisibleStack] = useState(14);
+
+  // Function to toggle the number of visible items
+  const toggleVisibleProjects = () =>
+    setVisibleProjects((prev) => (prev === 6 ? Project.length : 6));
+  const toggleVisibleCertificates = () =>
+    setVisibleCertificates((prev) => (prev === 6 ? Certificates.length : 6));
+  const toggleVisibleStack = () =>
+    setVisibleStack((prev) => (prev === 14 ? Skill_data.length : 14));
+
   return (
     <section id="portfolio">
       <Header
@@ -21,21 +35,21 @@ const Portofolio = () => {
           learning path."
       />
       <Tabs defaultValue="Projects" className=" flex flex-col items-center ">
-        <TabsList className="flex items-center justify-center bg-transparent border-2 border-gray-800 rounded-lg p-5 ">
+        <TabsList className="flex flex-col md:flex-row items-center justify-center bg-transparent border-2 border-gray-800 rounded-lg md:p-5 py-2 ">
           <TabsTrigger value="Projects">
-            <div className="flex flex-col items-center p-3 py-53  ">
+            <div className="flex flex-col items-center md:p-3 py-53   ">
               <FaCode size={32} />
               <h1>Projects</h1>
             </div>
           </TabsTrigger>
           <TabsTrigger value="Certificates">
-            <div className="flex flex-col items-center p-3 py-5">
+            <div className="flex flex-col items-center md:p-3 py-5">
               <LiaCertificateSolid size={32} />
               <h1>Certificates</h1>
             </div>
           </TabsTrigger>
           <TabsTrigger value="Stack">
-            <div className="flex flex-col items-center p-3 py-5">
+            <div className="flex flex-col items-center md:p-3 py-5">
               <LuBlocks size={32} />
               <h1>Tech Stack</h1>
             </div>
@@ -43,8 +57,8 @@ const Portofolio = () => {
         </TabsList>
         {/* Projects */}
         <TabsContent value="Projects">
-          <div className="grid grid-cols-3 gap-5 mx-10">
-            {Project.map((project) => (
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-5 mx-10">
+            {Project.slice(0, visibleProjects).map((project) => (
               <CardProject
                 key={project.id}
                 id={project.id}
@@ -55,19 +69,37 @@ const Portofolio = () => {
               />
             ))}
           </div>
+          {Project.length > 6 && (
+            <Button
+              variant={"outline"}
+              className="mx-10 mt-5"
+              onClick={toggleVisibleProjects}
+            >
+              {visibleProjects === 6 ? "See More" : "See Less"}
+            </Button>
+          )}
         </TabsContent>
         {/* Certificates */}
         <TabsContent value="Certificates">
-          <div className="grid grid-cols-3 gap-5 mx-10">
-            {Certificates.map((sertif, index) => (
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-5 mx-10">
+            {Certificates.slice(0, visibleCertificates).map((sertif, index) => (
               <CardCertificates key={index} ImgSertif={sertif.link} />
             ))}
           </div>
+          {Certificates.length > 6 && (
+            <Button
+              variant={"outline"}
+              className="mx-10 mt-5"
+              onClick={toggleVisibleCertificates}
+            >
+              {visibleCertificates === 6 ? "See More" : "See Less"}
+            </Button>
+          )}
         </TabsContent>
         {/* Stack */}
         <TabsContent value="Stack">
-          <div className="grid grid-cols-7 gap-5 mx-10">
-            {Skill_data.map((skill, index) => (
+          <div className="grid md:grid-cols-7 grid-cols-2 gap-5 mx-10">
+            {Skill_data.slice(0, visibleStack).map((skill, index) => (
               <CardStack
                 key={index}
                 TechStackIcon={skill.Image}
@@ -75,6 +107,15 @@ const Portofolio = () => {
               />
             ))}
           </div>
+          {Skill_data.length > 14 && (
+            <Button
+              variant={"outline"}
+              className="mx-10 mt-5"
+              onClick={toggleVisibleStack}
+            >
+              {visibleStack === 14 ? "See More" : "See Less"}
+            </Button>
+          )}
         </TabsContent>
       </Tabs>
     </section>
